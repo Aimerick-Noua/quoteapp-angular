@@ -1,0 +1,87 @@
+<div class="hold-transition login-page">
+<div class="login-box">
+    <div class="login-logo">
+      <a href="#"><b>Admin</b>LTE</a>
+    </div>
+    <!-- /.login-logo -->
+    <div class="card">
+      <div class="card-body login-card-body">
+        <p class="login-box-msg" [ngClass]="{'text-change': isSuccessful,'text-remain':!isSuccessful }">Sign in to start your session</p>
+  
+        <form *ngIf="!isSuccessful" #myForm="ngForm" (ngSubmit)="onSubmit(myForm)" novalidate>
+          <div class="input-group mb-3">
+            <input type="email" class="form-control" placeholder="Email" required="true" [(ngModel)]="formData.email" name="email">
+            <div class="input-group-append">
+              <div class="input-group-text">
+                <span class="fas fa-envelope"></span>
+              </div>
+            </div>
+            <div
+              *ngIf="myForm.controls['email'].invalid && (myForm.controls['email'].dirty || myForm.controls['email'].touched)"
+              class="alert alert-danger">
+              <div *ngIf="myForm.controls['email'].errors?.['required']">email is required</div>
+              <div *ngIf="myForm.controls['email'].errors?.['email']">email must be a valid email address</div>
+            </div>
+          </div>
+    
+          <div class="input-group mb-3">
+            <input type="text" class="form-control" placeholder="password" required="true" [(ngModel)]="formData.password" name="password"
+              minlength="6">
+            <div class="input-group-append">
+              <div class="input-group-text">
+                <span class="fas fa-lock"></span>
+              </div>
+            </div>
+            <div
+              *ngIf="myForm.controls['password'].invalid && (myForm.controls['password'].dirty || myForm.controls['password'].touched)"
+              class="alert alert-danger">
+              <div *ngIf="myForm.controls['password'].errors?.['required']">password is required</div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-8">
+              <div class="icheck-primary">
+                <input type="checkbox" id="remember">
+                <label for="remember">
+                  Remember Me
+                </label>
+              </div>
+            </div>
+            <!-- /.col -->
+            <div class="col-4">
+              <button type="submit" class="btn btn-primary btn-block" [disabled]="myForm.invalid">Sign In</button>
+            </div>
+            <!-- /.col -->
+           
+              </div>
+              <div class="alert alert-warning" *ngIf="myForm.submitted && isSignUpFailed">Sign In failed!<br />{{
+                errorMessage}}
+              </div>
+            </form>
+            
+            <div class="alert alert-success" *ngIf="isSuccessful">Your Sign In is successful! Welcome Back <br/></div>
+      
+      
+  
+        <div class="social-auth-links text-center mb-3">
+          <p>- OR -</p>
+          <a href="#" class="btn btn-block btn-primary">
+            <i class="fab fa-facebook mr-2"></i> Sign in using Facebook
+          </a>
+          <a href="#" class="btn btn-block btn-danger">
+            <i class="fab fa-google-plus mr-2"></i> Sign in using Google+
+          </a>
+        </div>
+        <!-- /.social-auth-links -->
+  
+        <p class="mb-1">
+          <a href="authentication/forgotPassword">I forgot my password</a>
+        </p>
+        <p class="mb-0">
+          <a href="authentication/register" class="text-center">Register a new membership</a>
+        </p>
+      </div>
+      <!-- /.login-card-body -->
+    </div>
+  </div>
+  </div>

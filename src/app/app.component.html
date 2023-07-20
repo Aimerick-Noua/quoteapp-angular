@@ -1,0 +1,16 @@
+<nav class="navbar navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand">QuoteApp</a>
+    <form class="d-flex">
+      <input class="form-control me-2 ml-5 bg-success" (click)="loginPage()" type="button" value="Log In" aria-label="Search">
+      <input class="form-control me-2 bg-primary" type="button" value="Sign Up" (click)="RegisterPage()" aria-label="Search">
+    </form>
+  </div>
+</nav>
+<li class="nav-item" *ngIf="showAdminBoard">
+  <a href="dashboard/content">Admin has this Dashboard</a>
+</li>
+
+
+
+<router-outlet></router-outlet>
